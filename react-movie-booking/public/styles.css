@@ -1,0 +1,271 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* Home.jsx */
+.home-container {
+  display: flex;
+  flex-wrap: wrap;
+  /* margin-left: 2rem;*/
+  /* margin-top: 1rem; */
+  margin-bottom: 1rem;
+  gap: 1rem 0;
+  justify-content: space-evenly;
+}
+
+.home-container > a {
+  padding: 0;
+}
+
+.center-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+/* MovieCard.jsx */
+.movie-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card-title {
+  color: #0d6efd !important;
+}
+
+.movie-card:hover .card-overlay {
+  opacity: 1;
+}
+
+
+/* NavigationBar.jsx */
+.custom-min-width {
+  min-width: 600px;
+}
+
+.nav-search {
+  position: relative;
+}
+
+.nav-list-group {
+  position: absolute;
+  top: 100%;
+  width: calc(100% - 0.5rem);
+  background-color: #fff; 
+  border-radius: 0.25rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  list-style-type: none;
+  padding: 0 0.5rem;
+  z-index: 1000;
+}
+
+.nav-list-item {
+  padding: 0.5rem 0.5rem;
+  cursor: pointer;
+}
+
+.nav-search-link, .nav-search-link:hover {
+  text-decoration: none;
+}
+
+.username {
+  color: #0d6efd;
+}
+
+
+/* MoviePage.jsx */
+.movie-details-container {
+  margin: 2rem 0;
+}
+
+.movie-img > img {
+  width: 100%;
+}
+
+.movie-text {
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+.movie-text h4 {
+  color:#0d6efd;
+  font-weight: 700;
+}
+
+.movie-text h6 {
+  color: #0d6efd;
+  margin-top: 1rem;
+}
+
+
+/* MovieSchedule.jsx */
+.movie-schedule-container {
+  margin-bottom: 1rem;
+}
+
+.cinema {
+  border: 1px solid #000;
+  padding: 1rem 0;
+  margin: 0 0 1rem 0 !important;
+}
+
+.cinema span {
+  color: #0d6efd;
+  font-weight: 600;
+}
+
+.cinema a {
+  color: #000;
+  padding: 0 1rem;
+}
+
+
+/* AddMovie.jsx */
+textarea {
+  resize: none !important;
+}
+
+/* BookingPage.jsx */
+.custom-container {
+  min-width: 600px;
+}
+
+.custom-margin {
+  margin: 1rem !important;
+}
+
+.custom-layout-container {
+  border: 1px solid #0d6efd;
+  border-radius: 0.5rem;
+  padding: 2rem 0 !important;
+  margin: 1rem !important;
+  min-width: 550px !important;
+}
+
+.custom-layout-container > h6 {
+  color: #000;
+  margin: 0 auto 3rem auto;
+}
+
+.custom-card-container {
+  padding: 0 !important;
+  margin-bottom: 1rem;
+}
+
+.custom-card-container span {
+  color: #0d6efd !important;
+}
+
+
+/* SeatsLayout.jsx */
+.custom-seat-row {
+  min-width: inherit;
+}
+
+.custom-seat-btn {
+  padding: 0 !important;
+  margin: 0.25rem;
+  width: 38.5px !important;
+}
+
+.custom-seat-btn:disabled {
+  border-color: rgba(0, 0, 0, 0.5) !important;
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.custom-edge-seat {
+  margin-right: 2rem !important;
+}
+
+
+/* PaymentCard.jsx */
+.custom-payment-row {
+  padding: 1rem 0 0 0;
+  justify-content: space-evenly;
+}
+
+.custom-payment-row > button {
+  padding: 0;
+  margin-bottom: 1rem;
+  width: fit-content !important;
+  height: fit-content !important;
+}
+
+.custom-payment-row .col {
+  display: flex;
+  justify-content: center;
+  padding: 0 !important;
+}
+
+.custom-payment-row img {
+  padding: 0 1rem;
+}
+
+.custom-payment-btn {
+  display: block !important;
+  margin: 0 auto;
+}
+
+
+/* LoginPage.jsx */
+.custom-login-position {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.custom-login-position img {
+  width: 72px; 
+  height: 72px;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.custom-login-position h1 {
+  color: #0d6efd;
+}
+
+.custom-login-position h5 {
+  margin-bottom: 1rem;
+}
+
+/* AdminMoviePage */
+.custom-admin-accordion > button {
+  padding: 0;
+}
+
+.custom-admin-table {
+  margin-bottom: 0 !important;
+}
+
+.custom-admin-btn {
+  position: relative;
+  z-index: 1000;
+}
