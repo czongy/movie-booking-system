@@ -8,27 +8,27 @@ import { axiosConfig } from "../axios.config";
 import UserContext from "../context/UserContext";
 
 export default function NavigationBar() {
-  const location = useLocation();
   const { user } = useContext(UserContext);
   const [input, setInput] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const location = useLocation();
   const navclass =
     location.pathname.match(/^\/movie\/[^/]+\/[^/]+$/) && "custom-min-width";
 
-  async function handleChange(value) {
-    setInput(value);
+ function handleChange(value) {
     if (value.length < 2) {
       setSearchResults([]);
     } else {
-      try {
-        const response = await axios.get(
-          axiosConfig.baseURL + `/movie/search?keyword=${value}`
-        );
-        setSearchResults(response.data);
-      } catch (error) {
-        console.log(error.response.data);
-      }
+      axios
+        .get(axiosConfig.baseURL + `/movie/search?keyword=${value}`)
+        .then((response) => {
+          setSearchResults(response.data);
+        })
+        .catch((error) => {
+          console.log(error.response.data);
+        });
     }
+    setInput(value);
   }
 
   return (

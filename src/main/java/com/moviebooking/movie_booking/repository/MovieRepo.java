@@ -16,6 +16,5 @@ public interface MovieRepo extends JpaRepository<Movie, Integer> {
             "LOWER(m.movieDirector) LIKE LOWER(CONCAT('%', :keyword, '%'))")
     List<Movie> searchMovies(String keyword);
 
-    @Query("SELECT m from Movie m ORDER BY id ASC")
-    List<Movie> getAllMovie();
+    List<Movie> findAllByOrderByIdAsc();
 }

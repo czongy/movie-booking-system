@@ -24,8 +24,8 @@ export default function RegisterPage() {
     e.preventDefault();
     axios
       .post(axiosConfig.baseURL + "/auth/register", register)
-      .then((response) => {
-        console.log("Registration successful:", response.data);
+      .then(() => {
+        console.log("Registration successful");
         alert("Registration successful");
         navigate("/login");
       })

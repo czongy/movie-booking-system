@@ -25,6 +25,10 @@ export default function MovieShowtime() {
         setHall1(ha1);
         setHall2(ha2);
         setHall3(ha3);
+
+        console.log(ha1[4].date);
+        console.log(new Date().toISOString());
+        console.log(ha1[4].date == new Date().toISOString().substring(0, 10));
       })
       .catch((error) => {
         console.log(error.response.data);
@@ -45,8 +49,14 @@ export default function MovieShowtime() {
                 <span>Eclipse Hall 1</span>
               </div>
               <div className="col-sm-10">
-                {hall1.map(
-                  (data) =>
+                {hall1
+                  .filter(data => {
+                    const today = new Date().toISOString().substring(0, 10);
+                    const currentTime = new Date().toLocaleTimeString('en-US', { hour12: false });
+
+                    return !(data.date === today && data.startTime < currentTime);
+                  })
+                  .map((data) =>
                     data.date ==
                       dateArr[tabIndex].toISOString().substring(0, 10) && (
                       <a key={data.id} href={"./" + id + "/" + data.id}>
@@ -61,7 +71,14 @@ export default function MovieShowtime() {
                 <span>Eclipse Hall 2</span>
               </div>
               <div className="col-sm-10">
-                {hall2.map(
+                {hall2
+                  .filter(data => {
+                    const today = new Date().toISOString().substring(0, 10);
+                    const currentTime = new Date().toLocaleTimeString('en-US', { hour12: false });
+
+                    return !(data.date === today && data.startTime < currentTime);
+                  })
+                  .map(
                   (data) =>
                     data.date ==
                       dateArr[tabIndex].toISOString().substring(0, 10) && (
@@ -77,15 +94,22 @@ export default function MovieShowtime() {
                 <span>Eclipse Hall 3</span>
               </div>
               <div className="col-sm-10">
-                {hall3.map(
-                  (data) =>
-                    data.date ==
-                      dateArr[tabIndex].toISOString().substring(0, 10) && (
-                      <a key={data.id} href={"./" + id + "/" + data.id}>
-                        {data.startTime}
-                      </a>
-                    )
-                )}
+                {hall3
+                  .filter(data => {
+                    const today = new Date().toISOString().substring(0, 10);
+                    const currentTime = new Date().toLocaleTimeString('en-US', { hour12: false });
+
+                    return !(data.date === today && data.startTime < currentTime);
+                  })
+                  .map(
+                    (data) =>
+                      data.date ==
+                        dateArr[tabIndex].toISOString().substring(0, 10) && (
+                        <a key={data.id} href={"./" + id + "/" + data.id}>
+                          {data.startTime}
+                        </a>
+                      )
+                    )}
               </div>
             </div>
           </Tab>

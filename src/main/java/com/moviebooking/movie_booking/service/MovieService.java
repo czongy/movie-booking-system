@@ -17,7 +17,7 @@ public class MovieService {
 
     public List<Movie> getAllMovies() {
         try {
-            return repo.getAllMovie();
+            return repo.findAllByOrderByIdAsc();
         } catch (DataAccessException e) {
             throw new RuntimeException("Database error while retrieving all movie data", e);
         } catch (Exception e) {

@@ -63,4 +63,19 @@ public class BookingService {
             throw new RuntimeException("Unexpected error occurred while retrieving booking.", e);
         }
     }
+
+    public void deleteBooking(int bookingId) {
+        try {
+            if (!repo.existsById(bookingId)) {
+                throw new NoSuchElementException("Delete) Booking not found with ID: " + bookingId);
+            }
+            repo.deleteById(bookingId);
+        } catch (DataAccessException e) {
+            throw new RuntimeException("Database error while deleting booking with ID: " + bookingId, e);
+        } catch (NoSuchElementException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new RuntimeException("Unexpected error occurred while deleting booking with ID: " + bookingId, e);
+        }
+    }
 }

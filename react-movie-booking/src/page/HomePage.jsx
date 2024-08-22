@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { axiosConfig } from "../axios.config";
 import HomeCard from "../components/HomeCard";
-// import HomeCarousel from "../components/HomeCarousel";
 
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
@@ -20,7 +19,6 @@ export default function HomePage() {
 
   return (
     <div className="home-container">
-      {/* <HomeCarousel /> */}
       {movies.length > 0 ? (
         movies.map((movie) => <HomeCard key={movie.id} movie={movie} />)
       ) : (

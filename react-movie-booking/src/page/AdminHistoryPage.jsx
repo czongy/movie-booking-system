@@ -31,8 +31,6 @@ export default function AdminHistoryPage() {
                   <td scope="col" className="col-3">{movie["releaseDate"]}</td>
                   <td scope="col" className="col-2">{movie["language"]}</td>
                   <td scope="col" className="col-3">{movie["genre"]}</td>
-                  {/* <td scope="col" className="col-3">Total seats booked: {info}</td>
-                  <td scope="col" className="col-3">Total revenue: ${info * 15}</td> */}
                 </tr>
               </thead>
             </Table>

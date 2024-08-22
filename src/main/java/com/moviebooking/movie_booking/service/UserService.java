@@ -16,11 +16,11 @@ public class UserService {
     public Users registerUser(Users user) {
         try {
             if (repo.existsByUsername(user.getUsername())) {
-                throw new IllegalArgumentException("User with username " + user.getUsername() + " already exists.");
+                throw new IllegalArgumentException("User with username '" + user.getUsername() + "' already exists.");
             }
 
             if (repo.existsByEmail(user.getEmail())) {
-                throw new IllegalArgumentException("User with email " + user.getEmail() + " already exists.");
+                throw new IllegalArgumentException("User with email '" + user.getEmail() + "' already exists.");
             }
 
             user.setPassword(encoder.encode(user.getPassword()));
@@ -29,7 +29,7 @@ public class UserService {
         } catch (DataAccessException e) {
             throw new RuntimeException("Database error while registering user", e);
         } catch (IllegalArgumentException e) {
-            throw new RuntimeException("Invalid input provided for user registration", e);
+            throw e;
         } catch (Exception e) {
             throw new RuntimeException("Unexpected error while registering user", e);
         }
