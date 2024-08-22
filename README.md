@@ -92,7 +92,7 @@ This project is a full-fledged Movie Booking System built using **React** and **
 ### Usage
 
 - **User Access**:
-- Visit `http://localhost:3000` to access the movie booking application as a user.
+- Visit `http://localhost:5173` to access the movie booking application as a user.
 - Register or log in to start booking tickets.
 
 - **Admin Access**:
