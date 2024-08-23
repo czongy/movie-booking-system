@@ -10,7 +10,7 @@ export default function HistoryPage() {
 
   useEffect(() => {
     axios
-      .get(axiosConfig.baseURL + `/booking/restrict/${user.userId}`)
+      .get(axiosConfig.baseURL + `/booking/restrict/${user.userId}`, { withCredentials: true })
       .then(response => {
         setBookings(response.data);
       })

@@ -25,10 +25,6 @@ export default function MovieShowtime() {
         setHall1(ha1);
         setHall2(ha2);
         setHall3(ha3);
-
-        console.log(ha1[4].date);
-        console.log(new Date().toISOString());
-        console.log(ha1[4].date == new Date().toISOString().substring(0, 10));
       })
       .catch((error) => {
         console.log(error.response.data);
@@ -50,56 +46,15 @@ export default function MovieShowtime() {
               </div>
               <div className="col-sm-10">
                 {hall1
-                  .filter(data => {
+                  .filter((data) => {
                     const today = new Date().toISOString().substring(0, 10);
-                    const currentTime = new Date().toLocaleTimeString('en-US', { hour12: false });
+                    const currentTime = new Date().toLocaleTimeString("en-US", {
+                      hour12: false,
+                    });
 
-                    return !(data.date === today && data.startTime < currentTime);
-                  })
-                  .map((data) =>
-                    data.date ==
-                      dateArr[tabIndex].toISOString().substring(0, 10) && (
-                      <a key={data.id} href={"./" + id + "/" + data.id}>
-                        {data.startTime}
-                      </a>
-                    )
-                )}
-              </div>
-            </div>
-            <div className="row cinema">
-              <div className="col-sm-2 text-center">
-                <span>Eclipse Hall 2</span>
-              </div>
-              <div className="col-sm-10">
-                {hall2
-                  .filter(data => {
-                    const today = new Date().toISOString().substring(0, 10);
-                    const currentTime = new Date().toLocaleTimeString('en-US', { hour12: false });
-
-                    return !(data.date === today && data.startTime < currentTime);
-                  })
-                  .map(
-                  (data) =>
-                    data.date ==
-                      dateArr[tabIndex].toISOString().substring(0, 10) && (
-                      <a key={data.id} href={"./" + id + "/" + data.id}>
-                        {data.startTime}
-                      </a>
-                    )
-                )}
-              </div>
-            </div>
-            <div className="row cinema">
-              <div className="col-sm-2 text-center">
-                <span>Eclipse Hall 3</span>
-              </div>
-              <div className="col-sm-10">
-                {hall3
-                  .filter(data => {
-                    const today = new Date().toISOString().substring(0, 10);
-                    const currentTime = new Date().toLocaleTimeString('en-US', { hour12: false });
-
-                    return !(data.date === today && data.startTime < currentTime);
+                    return !(
+                      data.date === today && data.startTime < currentTime
+                    );
                   })
                   .map(
                     (data) =>
@@ -109,7 +64,61 @@ export default function MovieShowtime() {
                           {data.startTime}
                         </a>
                       )
-                    )}
+                  )}
+              </div>
+            </div>
+            <div className="row cinema">
+              <div className="col-sm-2 text-center">
+                <span>Eclipse Hall 2</span>
+              </div>
+              <div className="col-sm-10">
+                {hall2
+                  .filter((data) => {
+                    const today = new Date().toISOString().substring(0, 10);
+                    const currentTime = new Date().toLocaleTimeString("en-US", {
+                      hour12: false,
+                    });
+
+                    return !(
+                      data.date === today && data.startTime < currentTime
+                    );
+                  })
+                  .map(
+                    (data) =>
+                      data.date ==
+                        dateArr[tabIndex].toISOString().substring(0, 10) && (
+                        <a key={data.id} href={"./" + id + "/" + data.id}>
+                          {data.startTime}
+                        </a>
+                      )
+                  )}
+              </div>
+            </div>
+            <div className="row cinema">
+              <div className="col-sm-2 text-center">
+                <span>Eclipse Hall 3</span>
+              </div>
+              <div className="col-sm-10">
+                {hall3
+                  .filter((data) => {
+                    const today = new Date().toISOString().substring(0, 10);
+                    const currentTime = new Date().toLocaleTimeString("en-US", {
+                      hour12: false,
+                    });
+
+                    return !(
+                      data.date === today && data.startTime < currentTime
+                    );
+                  })
+                  .map(
+                    (data) =>
+                      data.date ==
+                        dateArr[tabIndex].toISOString().substring(0, 10) && (
+                        <a key={data.id} href={"./" + id + "/" + data.id}>
+                          {data.startTime}
+                        </a>
+                      )
+                  )}
               </div>
             </div>
           </Tab>

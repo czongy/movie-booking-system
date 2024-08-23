@@ -44,7 +44,7 @@ export default function UpdateMoviePage() {
   function handleSubmit(e) {
     e.preventDefault();
     axios
-      .put(axiosConfig.baseURL + `/movie/restrict/update/${id}`, updateMovie)
+      .put(axiosConfig.baseURL + `/movie/restrict/update/${id}`, updateMovie, { withCredentials: true })
       .then((response) => {
         console.log("Movie updated successfully:", response.data);
         alert("Movie updated successfully");
@@ -57,7 +57,7 @@ export default function UpdateMoviePage() {
 
   function handleDelete() {
     axios
-      .delete(axiosConfig.baseURL + `/movie/restrict/delete/${id}`)
+      .delete(axiosConfig.baseURL + `/movie/restrict/delete/${id}`, { withCredentials: true })
       .then((response) => {
         console.log("Movie deleted successfully:", response.data);
         alert("Movie deleted successfully");

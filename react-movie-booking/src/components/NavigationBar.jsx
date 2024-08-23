@@ -32,7 +32,7 @@ export default function NavigationBar() {
   }
 
   return (
-    <Navbar expand="md" className={`bg-body-tertiary ${navclass}`}>
+    <Navbar expand="lg" className={`bg-body-tertiary ${navclass}`}>
       <div className="container-fluid">
         <Navbar.Brand href="/" className="text-primary fw-bold">
           <img

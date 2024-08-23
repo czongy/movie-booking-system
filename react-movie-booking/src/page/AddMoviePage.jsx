@@ -27,7 +27,7 @@ export default function AddMoviePage() {
   function handleSubmit(e) {
     e.preventDefault();
     axios
-      .post(axiosConfig.baseURL + "/movie/restrict/add", movie)
+      .post(axiosConfig.baseURL + "/movie/restrict/add", movie, { withCredentials: true })
       .then((response) => {
         console.log("Movie added successfully:", response.data);
         alert("Movie added successfully");

@@ -24,7 +24,7 @@ export default function AddShowtimePage() {
   function handleSubmit(e) {
     e.preventDefault();
     axios
-      .post(axiosConfig.baseURL + `/showtime/restrict/add/${id}`, showtime)
+      .post(axiosConfig.baseURL + `/showtime/restrict/add/${id}`, showtime, { withCredentials: true })
       .then(response => {
         console.log("Showtime added successfully:", response.data);
         alert("Showtime added successfully");

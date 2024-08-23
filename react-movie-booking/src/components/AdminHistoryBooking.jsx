@@ -7,14 +7,13 @@ import { Table, Button } from "react-bootstrap";
 export default function AdminHistoryBooking({ movieId }) {
   const navigate = useNavigate();
   const [booking, setBooking] = useState([]);
-  const [keyList, setKeyList] = useState([]);
+  const keyList = ["id", "userId",	"payment",	"selectedSeats",	"totalCost", "Action"];
 
   useEffect(() => {
     axios
-      .get(axiosConfig.baseURL + `/booking/restrict/movieId?movieId=${movieId}`)
+      .get(axiosConfig.baseURL + `/booking/restrict/movieId?movieId=${movieId}`, { withCredentials: true })
       .then((response) => {
         setBooking(response.data);
-        setKeyList(Object.keys(response.data[0]));
       })
       .catch((error) => {
         console.log(error);
@@ -23,7 +22,7 @@ export default function AdminHistoryBooking({ movieId }) {
 
   function handleDelete(bookingId) {
     axios
-      .delete(axiosConfig.baseURL + `/booking/restrict/delete/${bookingId}`)
+      .delete(axiosConfig.baseURL + `/booking/restrict/delete/${bookingId}`, { withCredentials: true })
       .then(() => {
         console.log("Booking deleted successfully:");
         alert("Booking deleted successfully");
@@ -38,7 +37,7 @@ export default function AdminHistoryBooking({ movieId }) {
     <Table className="text-center">
       <thead>
         <tr>
-          {Array.from({ length: 5 }).map((_, index) => (
+          {Array.from({ length: 6 }).map((_, index) => (
             <th key={index}>{keyList[index]}</th>
           ))}
         </tr>

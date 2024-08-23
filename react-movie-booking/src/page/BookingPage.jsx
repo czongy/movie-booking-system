@@ -67,7 +67,7 @@ export default function BookingPage() {
 
     const fetchData = async () => {
       axios
-        .post(axiosConfig.baseURL + `/booking/restrict/add/${stid}`, bookingObject)
+        .post(axiosConfig.baseURL + `/booking/restrict/add/${stid}`, bookingObject, { withCredentials: true })
         .then(() => {
           alert(
             "Thank you for your purchase! Your payment has been successfully processed."

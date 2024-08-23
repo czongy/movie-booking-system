@@ -35,3 +35,4 @@ build/
 ### Spring ###
 /src/main/resources/application.properties
 /src/main/resources/data
+/react-movie-booking/src/recaptcha.js

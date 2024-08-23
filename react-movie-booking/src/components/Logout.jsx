@@ -10,11 +10,12 @@ export default function Logout() {
 
   useEffect(() => {
     axios
-      .post(axiosConfig.baseURL + "/logout")
+      .post(axiosConfig.baseURL + "/logout", {withCredentials: true})
       .then(() => {
         console.log("Logout successful");
         handleLogoutUser();
         alert("Logout successful");
+        document.cookie = 'JSESSIONID=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT;';
         navigate("/");
       })
       .catch((error) => {

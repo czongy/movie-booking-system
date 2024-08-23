@@ -1,13 +1,17 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Button, Form, FloatingLabel } from "react-bootstrap";
 import axios from "axios";
 import { axiosConfig } from "../axios.config";
+import { reCaptcha} from "../recaptcha";
+import ReCAPTCHA from "react-google-recaptcha";
 import UserContext from "../context/UserContext";
 
 export default function LoginPage() {
   const navigate = useNavigate();
+  const recaptchaRef = useRef();
   const { handleLoginUser } = useContext(UserContext);
+  const [capVal, setCapVal] = useState(null);
   const [login, setLogin] = useState({
     username: "",
     password: "",
@@ -29,10 +33,9 @@ export default function LoginPage() {
         headers: {
           Authorization: `Basic ${auth}`,
         },
-        withCredentials: true,
+        withCredentials: true
       })
       .then((response) => {
-        console.log(response.data);
         handleLoginUser(response.data);
         alert("Login successful");
         navigate("/");
@@ -40,6 +43,8 @@ export default function LoginPage() {
       .catch((error) => {
         console.log(error);
         alert("Login failed. Please try again.");
+        setCapVal(null);
+        recaptchaRef.current.reset()
       });
   }
 
@@ -75,7 +80,8 @@ export default function LoginPage() {
             required
           />
         </FloatingLabel>
-        <Button variant="primary" type="submit">
+        <ReCAPTCHA sitekey={reCaptcha.siteKey} onChange={val => setCapVal(val)} ref={recaptchaRef} />
+        <Button className="mt-3" variant="primary" type="submit" disabled={!capVal}>
           Login
         </Button>
       </Form>

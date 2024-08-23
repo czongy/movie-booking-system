@@ -40,7 +40,7 @@ export default function UpdateSTPage() {
   function handleSubmit(e) {
     e.preventDefault();
     axios
-      .put(axiosConfig.baseURL + `/showtime/restrict/update/${stid}`, updateShowtime)
+      .put(axiosConfig.baseURL + `/showtime/restrict/update/${stid}`, updateShowtime, { withCredentials: true })
       .then(response => {
         console.log("Showtime updated successfully:", response.data);
         alert("Showtime updated successfully");
@@ -53,7 +53,7 @@ export default function UpdateSTPage() {
 
   function handleDelete() {
     axios
-      .delete(axiosConfig.baseURL + `/showtime/restrict/delete/${stid}`)
+      .delete(axiosConfig.baseURL + `/showtime/restrict/delete/${stid}`, { withCredentials: true })
       .then(response => {
         console.log("Showtime deleted successfully:", response.data);
         alert("Showtime deleted successfully");
