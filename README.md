@@ -74,6 +74,10 @@ This project is a full-fledged Movie Booking System built using **React** and **
   spring.jpa.show-sql=true
   spring.jpa.hibernate.ddl-auto=update
   spring.jpa.defer-datasource-initialization = true
+  server.servlet.session.cookie.same-site=None
+  server.servlet.session.cookie.secure=false
+  server.servlet.session.cookie.http-only=false
+  server.servlet.session.cookie.max-age=3600
   ```
 - Install the necessary dependencies and run the application:
   ```
