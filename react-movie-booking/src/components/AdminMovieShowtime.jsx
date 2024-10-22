@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { axiosConfig } from "../axios.config";
 import { Table, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export default function AdminMovieShowtime({ movieId }) {
   const [showtime, setShowtime] = useState([]);
@@ -28,7 +29,7 @@ export default function AdminMovieShowtime({ movieId }) {
           ))}
           <th scope="col" className="col-1">Action </th>
           <th scope="col" className="col-1">
-            <Button href={`/admin/addshowtime/${movieId}`}>Add</Button>
+            <Button className="custom-admin-btn" as={Link} to={`/admin/addshowtime/${movieId}`}>Add</Button>
           </th>
         </tr>
       </thead>
@@ -39,7 +40,7 @@ export default function AdminMovieShowtime({ movieId }) {
               <td key={i}>{item[keyList[i]]}</td>
             ))}
             <td>
-              <a href={`/admin/updateshowtime/${item.id}`}>Update</a>
+              <Link to={`/admin/updateshowtime/${item.id}`}>Update</Link>
             </td>
           </tr>
         ))}

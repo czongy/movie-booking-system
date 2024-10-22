@@ -4,6 +4,7 @@ import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import axios from "axios";
 import { axiosConfig } from "../axios.config";
+import { Link } from "react-router-dom";
 
 export default function MovieShowtime() {
   const { id } = useParams();
@@ -60,9 +61,9 @@ export default function MovieShowtime() {
                     (data) =>
                       data.date ==
                         dateArr[tabIndex].toISOString().substring(0, 10) && (
-                        <a key={data.id} href={"./" + id + "/" + data.id}>
+                        <Link key={data.id} to={"./" + data.id}>
                           {data.startTime}
-                        </a>
+                        </Link>
                       )
                   )}
               </div>
@@ -87,9 +88,9 @@ export default function MovieShowtime() {
                     (data) =>
                       data.date ==
                         dateArr[tabIndex].toISOString().substring(0, 10) && (
-                        <a key={data.id} href={"./" + id + "/" + data.id}>
+                        <Link key={data.id} to={"./" + data.id}>
                           {data.startTime}
-                        </a>
+                        </Link>
                       )
                   )}
               </div>
@@ -114,9 +115,9 @@ export default function MovieShowtime() {
                     (data) =>
                       data.date ==
                         dateArr[tabIndex].toISOString().substring(0, 10) && (
-                        <a key={data.id} href={"./" + id + "/" + data.id}>
+                        <Link key={data.id} to={"./" + data.id}>
                           {data.startTime}
-                        </a>
+                        </Link>
                       )
                   )}
               </div>

@@ -3,6 +3,7 @@ import axios from "axios";
 import { axiosConfig } from "../axios.config";
 import { Table, Accordion, Button } from "react-bootstrap";
 import AdminMovieShowtime from "../components/AdminMovieShowtime";
+import { Link } from "react-router-dom";
 
 export default function AdminMoviePage() {
   const [movieList, setMovieList] = useState([]);
@@ -27,7 +28,7 @@ export default function AdminMoviePage() {
               <thead>
                 <tr>
                   <td scope="col" className="col-1">
-                    <Button className="custom-admin-btn" href={`/admin/updatemovie/${movie.id}`}>Update</Button>
+                    <Button as={Link} className="custom-admin-btn" to={`/admin/updatemovie/${movie.id}`}>Update</Button>
                   </td>
                   <td scope="col" className="col-1">{movie["id"]}</td>
                   <td scope="col" className="col-4">{movie["name"]}</td>

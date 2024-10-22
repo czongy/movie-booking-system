@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Form from "react-bootstrap/Form";
@@ -34,7 +34,7 @@ export default function NavigationBar() {
   return (
     <Navbar expand="lg" className={`bg-body-tertiary ${navclass}`}>
       <div className="container-fluid">
-        <Navbar.Brand href="/" className="text-primary fw-bold">
+        <Navbar.Brand as={Link} to="/" className="text-primary fw-bold">
           <img
             alt=""
             src="/company-logo.svg"
@@ -49,24 +49,24 @@ export default function NavigationBar() {
           <Nav className="ms-auto">
             {!user ? (
               <>
-                <Nav.Link href="/login">Login</Nav.Link>
-                <Nav.Link href="/register">Register</Nav.Link>
+                <Link to="/login">Login</Link>
+                <Link to="/register">Register</Link>
               </>
             ) : (
               <>
                 {user.role === "[ROLE_ADMIN]" && (
                   <>
-                    <Nav.Link href="/admin/addmovie">Add movie</Nav.Link>
-                    <Nav.Link href="/admin/movielist">Movie List</Nav.Link>
-                    <Nav.Link href="/admin/bookinglist">Booking List</Nav.Link>
+                    <Link to="/admin/addmovie">Add movie</Link>
+                    <Link to="/admin/movielist">Movie List</Link>
+                    <Link to="/admin/bookinglist">Booking List</Link>
                   </>
                 )}
                 {user.role === "[ROLE_USER]" && (
-                  <Nav.Link href="/user/booking">
+                  <Link to="/user/booking">
                     <span className="username">{user.username}</span>
-                  </Nav.Link>
+                  </Link>
                 )}
-                <Nav.Link href="/logout">Logout</Nav.Link>
+                <Link to="/logout">Logout</Link>
               </>
             )}
           </Nav>
@@ -83,9 +83,9 @@ export default function NavigationBar() {
               <ul className="nav-list-group">
                 {searchResults.map((result) => (
                   <li key={result.id} className="nav-list-item">
-                    <a href={`/movie/${result.id}`} className="nav-search-link">
+                    <Link to={`/movie/${result.id}`} className="nav-search-link">
                       <span>{result.name}</span>
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
